@@ -1,1 +1,123 @@
 
+#!/bin/bash
+
+echo "Welcome to bash script."
+
+echo
+
+echo "The uptime for the system is:"
+uptime
+
+echo "Memory utilisation"
+free -gt
+
+echo "Disk utilisation"
+df -h
+~
+~
+
+
+[root@scriptbox scripts]# ./firstscript.sh  ----------> permission denied due to no execution access.
+-bash: ./firstscript.sh: Permission denied
+[root@scriptbox scripts]# ls -ltr
+total 4
+-rw-r--r--. 1 root root 163 Sep 10 12:58 firstscript.sh
+
+
+Changed permission
+
+[root@scriptbox scripts]# chmod +x firstscript.sh
+[root@scriptbox scripts]# ls -ltr
+total 4
+-rwxr-xr-x. 1 root root 163 Sep 10 12:58 firstscript.sh
+
+Now execute
+
+[root@scriptbox scripts]# ./firstscript.sh
+Welcome to bash script.
+
+The uptime for the system is:
+ 13:02:11 up 21 min,  2 users,  load average: 0.00, 0.05, 0.26
+Memory utilisation
+              total        used        free      shared  buff/cache   available
+Mem:              0           0           0           0           0           0
+Swap:             0           0           0
+Total:            1           0           1
+Disk utilisation
+Filesystem               Size  Used Avail Use% Mounted on
+devtmpfs                 484M     0  484M   0% /dev
+tmpfs                    496M     0  496M   0% /dev/shm
+tmpfs                    496M  6.8M  489M   2% /run
+tmpfs                    496M     0  496M   0% /sys/fs/cgroup
+/dev/mapper/centos-root   50G  1.5G   49G   3% /
+/dev/mapper/centos-home   28G   33M   28G   1% /home
+/dev/sda1               1014M  168M  847M  17% /boot
+vagrant                  393G   30G  363G   8% /vagrant
+tmpfs                    100M     0  100M   0% /run/user/1000
+tmpfs                    100M     0  100M   0% /run/user/0
+[root@scriptbox scripts]#
+
+
+Now changin little bit
+
+Now script is readable.
+
+  1 #!/bin/bash
+      2
+      3 #### This script prints systeminfo  #######
+      4
+      5 echo "Welcome to bash script."
+      6
+      7 echo
+      8 echo "########################################"
+      9
+     10
+     11 ### Checking system utime ####
+     12 echo "The uptime for the system is:"
+     13 uptime
+     14 echo
+     15 echo "########################################"
+     16
+     17
+     18 ###Memory utilisation
+     19 echo "Memory utilisation"
+     20 free -gt
+     21 echo
+     22 echo "########################################"
+     23
+     24
+     25 # Disk utilisaion
+     26 echo "Disk utilisation"
+     27 df -h
+
+
+After execution
+
+Welcome to bash script.
+
+########################################
+The uptime for the system is:
+ 13:08:12 up 27 min,  2 users,  load average: 0.00, 0.01, 0.18
+
+########################################
+Memory utilisation
+              total        used        free      shared  buff/cache   available
+Mem:              0           0           0           0           0           0
+Swap:             0           0           0
+Total:            1           0           1
+
+########################################
+Disk utilisation
+Filesystem               Size  Used Avail Use% Mounted on
+devtmpfs                 484M     0  484M   0% /dev
+tmpfs                    496M     0  496M   0% /dev/shm
+tmpfs                    496M  6.8M  489M   2% /run
+tmpfs                    496M     0  496M   0% /sys/fs/cgroup
+/dev/mapper/centos-root   50G  1.5G   49G   3% /
+/dev/mapper/centos-home   28G   33M   28G   1% /home
+/dev/sda1               1014M  168M  847M  17% /boot
+vagrant                  393G   30G  363G   8% /vagrant
+tmpfs                    100M     0  100M   0% /run/user/1000
+tmpfs                    100M     0  100M   0% /run/user/0
+[root@scriptbox scripts]#
+
